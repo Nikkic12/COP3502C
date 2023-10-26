@@ -15,6 +15,18 @@ def encoder(password):  # Nikki Chen
         string += str(x)
     return string
 
+def decode(password):
+    decoded_pass = ""
+    for i in password:
+        if i == "0":
+            decoded_pass += "7"
+        elif i == "1":
+            decoded_pass += "8"
+        elif i == "2":
+            decoded_pass += "9"
+        else:
+            decoded_pass += str(int(i) - 3)
+    return decoded_pass
 
 def main():
     program_continues = True
@@ -30,7 +42,8 @@ def main():
             encoded_password = encoder(password_to_encode)
             print("Your password has been encoded and stored!")
         elif option_input == 2:
-            pass
+            decoded_password = decode(encoded_password)
+            print(f"The encoded password is {encoded_password}, and the original password is {decoded_password}.\n")
         elif option_input == 3:
             break
 if __name__ == "__main__":
